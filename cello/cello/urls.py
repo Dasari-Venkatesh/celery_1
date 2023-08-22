@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+# from swiggify.forms import GenerateRandomUserForm
+
+from swiggify.views import UsersListView,GenerateRandomUserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('',include('swiggify.urls')),    
+    path('', UsersListView.as_view(), name='users_list'),
+    path('generate/', GenerateRandomUserView.as_view(), name='generate'),
     
 
 ]
